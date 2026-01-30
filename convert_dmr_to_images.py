@@ -1052,6 +1052,9 @@ def create_html_viewer(tile_metadata, overview_info, grid_info, output_path, ima
             display: block;
             opacity: 0;
             transition: opacity 0.3s;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
         }}
         
         .map-tile img.loaded {{ opacity: 1; }}
@@ -1809,6 +1812,7 @@ Northing → Latitude:
         // PAN & ZOOM
         // =====================================================================
         mapContainer.addEventListener('mousedown', e => {{
+            e.preventDefault();
             isDragging = true;
             dragStartX = e.clientX;
             dragStartY = e.clientY;
